@@ -6,7 +6,7 @@ metadata:
   labels:
     app: opensearch-dashboards
 spec:
-  replicas: 0
+  replicas: 1
   selector:
     matchLabels:
       app: opensearch-dashboards
