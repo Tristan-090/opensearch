@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   build-and-push:
     docker:
-      - image: cimg/docker:20.10  # Image avec Docker préinstallé
+      - image: cimg/docker:stable  # Image avec Docker préinstallé
     steps:
       - checkout
       - setup_remote_docker
