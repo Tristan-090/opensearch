@@ -35,6 +35,8 @@ spec:
           value: "true"
         - name: OPENSEARCH_JAVA_OPTS
           value: "-Xms1g -Xmx1g"
+        - name: plugins.security.disabled  # Ajoutez cette variable
+          value: "true"
         resources:  # Ajoutez cette section ici
           requests:
             cpu: "500m"    # Demande 0.5 CPU
