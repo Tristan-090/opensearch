@@ -1,5 +1,25 @@
 version: '3.8'
 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    annotations:
+        circleci.com/project-id: c0685861-f132-45c7-a4f1-b6a455681653
+    labels:
+        circleci.com/component-name: opensearch
+        circleci.com/version: 1.0.0
+    name: opensearch
+    namespace: default
+spec:
+    selector:
+      matchLabels:
+          app: opensearch
+    template:
+        metadata:
+            labels:
+                app: opensearch
+                circleci.com/component-name: opensearch
+                circleci.com/version: 1.0.0
 services:
   opensearch:
     image: tristan090/opensearch:latest
@@ -33,3 +53,5 @@ services:
 networks:
   opensearch-net:
     driver: bridge
+
+
