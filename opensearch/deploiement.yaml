@@ -15,6 +15,13 @@ spec:
       labels:
         app: opensearch
     spec:
+      tolerations:
+      - key: "node-role.kubernetes.io/control-plane"
+        operator: "Exists"
+        effect: "NoSchedule"
+      - key: "node.kubernetes.io/disk-pressure"
+        operator: "Exists"
+        effect: "NoSchedule"
       containers:
       - name: opensearch
         image: tristan090/opensearch:latest
@@ -28,6 +35,13 @@ spec:
           value: "true"
         - name: OPENSEARCH_JAVA_OPTS
           value: "-Xms512m -Xmx512m"
+        resources:  # Ajoutez cette section ici
+          requests:
+            cpu: "500m"    # Demande 0.5 CPU
+            memory: "1Gi"  # Demande 1 Go de mémoire
+          limits:
+            cpu: "1000m"   # Limite à 1 CPU
+            memory: "2Gi"  # Limite à 2 Go de mémoire
 ---
 apiVersion: v1
 kind: Service
