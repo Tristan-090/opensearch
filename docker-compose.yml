@@ -19,7 +19,7 @@ services:
       - opensearch-net
 
   opensearch-dashboards:
-    image: opensearchproject/opensearch-dashboards:latest
+    image: tristan090/opensearch-dashboards:latest
     container_name: opensearch-dashboards
     environment:
       - OPENSEARCH_HOSTS=["http://opensearch:9200"]
