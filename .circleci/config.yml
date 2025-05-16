@@ -1,0 +1,15 @@
+version: 2.1
+jobs:
+  build-and-test:
+    docker:
+      - image: tristan090/opensearch:latest
+    steps:
+      - run:
+          name: Login to Docker Hub
+          command: echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+      - checkout
+      # Ajoutez vos étapes ici
+workflows:
+  build:
+    jobs:
+      - build-and-test
