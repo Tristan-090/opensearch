@@ -14,7 +14,7 @@ jobs:
           command: docker build -t tristan090/opensearch:latest -f opensearch/Dockerfile .
       - run:
           name: Build Dashboard Image
-          command: docker build -t tristan090/opensearch-dashboards:latest -f opensearch/Dockerfile dashboard/Dockerfile .
+          command: docker build -t tristan090/opensearch-dashboards:latest -f dashboard/Dockerfile .
       - run:
           name: Push Docker Image
           command: |
