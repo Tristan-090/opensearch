@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   build-and-push:
     docker:
-      - image: cimg/base:2023.01
+      - image: cimg/base:2023
     steps:
       - checkout
       - setup_remote_docker:
@@ -15,7 +15,9 @@ jobs:
           command: docker build -t tristan090/opensearch:latest .
       - run:
           name: Push Docker Image
-          command: docker push tristan090/opensearch:latest
+          command: |
+            docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
+            docker push tristan090/opensearch:latest
 workflows:
   build:
     jobs:
