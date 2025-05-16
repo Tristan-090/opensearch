@@ -1,8 +1,8 @@
 version: 2.1
 jobs:
-  build-and-push:
+  build:
     docker:
-      - image: node:14  # Image avec Docker préinstallé
+      - image: cimg/docker:stable  # Image avec Docker préinstallé
     steps:
       - checkout
       - setup_remote_docker
