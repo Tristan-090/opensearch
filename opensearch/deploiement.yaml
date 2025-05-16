@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: opensearch
+  namespace: default
+  labels:
+    app: opensearch
+    circleci.com/component-name: opensearch
+    circleci.com/version: 1.0.0
+  annotations:
+    circleci.com/project-id: c0685861-f132-45c7-a4f1-b6a455681653
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: opensearch
+  template:
+    metadata:
+      labels:
+        app: opensearch
+    spec:
+      containers:
+        - name: opensearch
+          image: tristan090/opensearch:latest
+          env:
+            - name: discovery.type
+              value: "single-node"
+            - name: bootstrap.memory_lock
+              value: "true"
+            - name: OPENSEARCH_JAVA_OPTS
+              value: "-Xms512m -Xmx512m"
+          ports:
+            - containerPort: 9200
+            - containerPort: 9600
+          resources:
+            limits:
+              memory: "1Gi"
+            requests:
+              memory: "512Mi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: opensearch
+  namespace: default
+spec:
+  selector:
+    app: opensearch
+  ports:
+    - port: 9200
+      targetPort: 9200
+      name: http
+    - port: 9600
+      targetPort: 9600
+      name: transport
