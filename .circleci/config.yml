@@ -11,10 +11,10 @@ jobs:
           command: echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
       - run:
           name: Build Docker Image
-          command: docker build -t tristan090/opensearch:latest -f /home/etudiant/opensearch/Dockerfile .
+          command: docker build -t tristan090/opensearch:latest -f /opensearch/Dockerfile .
       - run:
           name: Build Dashboard Image
-          command: docker build -t tristan090/opensearch-dashboards:latest -f /home/etudiant/opensearch/Dockerfile Dashboard/Dockerfile .
+          command: docker build -t tristan090/opensearch-dashboards:latest -f /opensearch/Dockerfile dashboard/Dockerfile .
       - run:
           name: Push Docker Image
           command: |
