@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: cimg/node  # Image avec Docker préinstallé
+      - image: docker:stable  # Image avec Docker préinstallé
     steps:
       - checkout
       - setup_remote_docker
