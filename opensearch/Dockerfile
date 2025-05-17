@@ -1,5 +1,5 @@
 # Utiliser l'image officielle OpenSearch comme base
-FROM opensearchproject/opensearch:latest
+FROM tristan090/opensearch:latest
 
 # Définir des variables d'environnement
 ENV discovery.type=single-node
