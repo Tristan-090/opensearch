@@ -5,11 +5,15 @@ services:
     image: tristan090/opensearch:latest
     container_name: opensearch
     environment:
-      
-      - plugins.security.disabled=true
+      - OPENSEARCH_SSL_HTTP_ENABLED=true
+      - OPENSEARCH_SSL_HTTP_PEMCERT_FILEPATH=/certs/cert.pem
+      - OPENSEARCH_SSL_HTTP_PEMKEY_FILEPATH=/certs/key.pem
+      - OPENSEARCH_SSL_HTTP_PEMTRUSTEDCAS_FILEPATH=/certs/ca.pem
       - discovery.type=single-node
-     
+      - bootstrap.memory_lock=true
       - "OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m"
+    volumes:
+      - ./certs:/certs
     ulimits:
       memlock:
         soft: -1
