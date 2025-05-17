@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-  build-and-push:  # Changement de 'build' à 'build-and-push'
+  build:  # Changement de 'build' à 'build-and-push'
     docker:
       - image: cimg/docker:stable  # Image avec Docker préinstallé
     steps:
@@ -23,4 +23,4 @@ jobs:
 workflows:
   build:
     jobs:
-      - build-and-push  # Le nom correspond maintenant au job défini
+      - build  # Le nom correspond maintenant au job défini
