@@ -33,7 +33,7 @@ services:
     environment:
       - OPENSEARCH_HOSTS=["https://opensearch:9200"]
       - DISABLE_SECURITY_DASHBOARDS=true
-      #- opensearch.ssl.verificationMode= none
+      - opensearch.ssl.verificationMode= none
     ports:
       - "5601:5601"
     depends_on:
