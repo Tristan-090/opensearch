@@ -29,7 +29,7 @@ spec:
         - containerPort: 5601
         env:
         - name: OPENSEARCH_HOSTS
-          value: "http://opensearch:9200"
+          value: "http://10.101.18.109:9200"
         - name: opensearch_security.disabled
           value: "true"
         resources:  # Ajoutez cette section ici
