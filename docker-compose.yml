@@ -2,14 +2,15 @@
 
 services:
   opensearch:
-    image: tristan090/opensearch:latest
+    image: opensearchproject/opensearch:latest
     container_name: opensearch
     environment:
       - discovery.type=single-node
       - bootstrap.memory_lock=true
       - "OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m"
-      - OPENSEARCH_INITIAL_ADMIN_PASSWORD=Lelievre123=
+      - OPENSEARCH_INITIAL_ADMIN_PASSWORD=Lelievretristan123=
       - plugins.security.disabled=true
+      #- opensearch.ssl.transport.enabled=false
     volumes:
       - ./certs:/certs
     ulimits:
@@ -23,11 +24,12 @@ services:
       - opensearch-net
 
   opensearch-dashboards:
-    image: tristan090/opensearch-dashboards:latest
+    image: opensearchproject/opensearch-dashboards:latest
     container_name: opensearch-dashboards
     environment:
-      - OPENSEARCH_HOSTS=["http://opensearch:9200"]
-      - opensearch.ssl.verificationMode= none
+      - OPENSEARCH_HOSTS=http://opensearch:9200
+      - DISABLE_SECURITY_DASHBOARDS=true
+      #- opensearch.ssl.verificationMode= none
     ports:
       - "5601:5601"
     depends_on:

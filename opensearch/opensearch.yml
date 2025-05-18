@@ -4,7 +4,7 @@ network.host: 127.0.0.1
 discovery.seed_hosts: ["http://localhost:9200"]
 http.port: 9200
 discovery.type: single-node
-plugins.security.disabled: true
+#plugins.security.disabled: true
 
 #http.port: 9200
 #plugins.security.disabled: true
@@ -13,11 +13,14 @@ plugins.security.disabled: true
 #  - CN=kirk,OU=client,O=client,L=test,C=DE
 
 # Désactiver SSL pour les connexions HTTP
-opensearch.ssl.http.enabled: false
+#opensearch.ssl.http.enabled: false
 
 # Désactiver SSL pour les connexions de transport (communication entre nœuds)
-opensearch.ssl.transport.enabled: false
+#opensearch.ssl.transport.enabled: false
 
 # Désactiver le plugin de sécurité (facultatif, si vous ne voulez pas d’authentification)
 #plugins.security.disabled: true
-
+plugins.security.ssl.transport.pemcert_filepath: /home/etudiant/opensearch/cert.pem
+plugins.security.ssl.transport.pemkey_filepath: /home/etudiant/opensearch/key.pem
+#plugins.security.ssl.transport.enforced: false
+#plugins.security.ssl.http.enabled: false
