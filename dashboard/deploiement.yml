@@ -29,16 +29,16 @@ spec:
         - containerPort: 5601
         env:
         - name: OPENSEARCH_HOSTS
-          value: "http://10.101.18.109:9200"
+          value: "http://opensearch:9200"
         - name: opensearch_security.disabled
           value: "true"
         resources:  # Ajoutez cette section ici
           requests:
-            cpu: "1000m"    # Demande 0.5 CPU
+            cpu: "500m"    # Demande 0.5 CPU
             memory: "2Gi"  # Demande 1 Go de mémoire
           limits:
-            cpu: "2000m"   # Limite à 1 CPU
-            memory: "3Gi"  # Limite à 2 Go de mémoire
+            cpu: "1000m"   # Limite à 1 CPU
+            memory: "2Gi"  # Limite à 2 Go de mémoire
         volumeMounts:
         - name: dashboards-logs
           mountPath: /var/log/opensearch-dashboards

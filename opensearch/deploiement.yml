@@ -42,8 +42,8 @@ spec:
             cpu: "500m"    # Demande 0.5 CPU
             memory: "1Gi"  # Demande 1 Go de mémoire
           limits:
-            cpu: "2000m"   # Limite à 1 CPU
-            memory: "3Gi"  # Limite à 2 Go de mémoire
+            cpu: "1000m"   # Limite à 1 CPU
+            memory: "2Gi"  # Limite à 2 Go de mémoire
 ---
 apiVersion: v1
 kind: Service

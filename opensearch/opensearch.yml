@@ -1,6 +1,6 @@
 cluster.name: opensearch-cluster
 node.name: node-1
-network.host: 0.0.0.0
+network.host: 127.0.0.1
 discovery.seed_hosts: ["http://localhost:9200"]
 http.port: 9200
 discovery.type: single-node
