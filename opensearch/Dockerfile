@@ -6,7 +6,7 @@ FROM opensearchproject/opensearch:latest
 #ENV OPENSEARCH_JAVA_OPTS="-Xms512m -Xmx512m"
 
 # Copier un fichier de configuration personnalisé (facultatif)
-COPY opensearch.yml /usr/share/opensearch/config/opensearch.yml
+#COPY opensearch.yml /usr/share/opensearch/config/opensearch.yml
 #RUN echo "plugins.security.disabled: true" >> /usr/share/opensearch/config/opensearch.yml
 
 # Exposer les ports utilisés par OpenSearch
