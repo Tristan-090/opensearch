@@ -8,7 +8,8 @@ services:
       - discovery.type=single-node
       - bootstrap.memory_lock=true
       - "OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m"
-      - OPENSEARCH_INITIAL_ADMIN_PASSWORD=Lelievretristan123=
+      #- OPENSEARCH_INITIAL_ADMIN_PASSWORD=Lelievretristan123=
+      - OPENSEARCH_INITIAL_ADMIN_PASSWORD=${OPENSEARCH_INITIAL_ADMIN_PASSWORD}
       - plugins.security.disabled=true
       #- opensearch.ssl.transport.enabled=false
     volumes:
@@ -25,9 +26,12 @@ services:
 
   opensearch-dashboards:
     image: opensearchproject/opensearch-dashboards:latest
+    volumes:
+      - ./opensearch_dashboards.yml:/home/etudiant/opensearch/opensearch_dashboards.yml
+   
     container_name: opensearch-dashboards
     environment:
-      - OPENSEARCH_HOSTS=http://opensearch:9200
+      - OPENSEARCH_HOSTS=["https://opensearch:9200"]
       - DISABLE_SECURITY_DASHBOARDS=true
       #- opensearch.ssl.verificationMode= none
     ports:
