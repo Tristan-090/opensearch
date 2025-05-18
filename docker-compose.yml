@@ -10,7 +10,7 @@ services:
       - "OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m"
       #- OPENSEARCH_INITIAL_ADMIN_PASSWORD=Lelievretristan123=
       - OPENSEARCH_INITIAL_ADMIN_PASSWORD=${OPENSEARCH_INITIAL_ADMIN_PASSWORD}
-      - plugins.security.disabled=true
+      #- plugins.security.disabled=true
       #- opensearch.ssl.transport.enabled=false
     volumes:
       - ./certs:/certs
@@ -32,8 +32,8 @@ services:
     container_name: opensearch-dashboards
     environment:
       - OPENSEARCH_HOSTS=["https://opensearch:9200"]
-      - DISABLE_SECURITY_DASHBOARDS=true
-      - opensearch.ssl.verificationMode= none
+      #- DISABLE_SECURITY_DASHBOARDS=true
+      #- opensearch.ssl.verificationMode= none
     ports:
       - "5601:5601"
     depends_on:
